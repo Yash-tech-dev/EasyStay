@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,7 @@ import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,8 +17,16 @@ const Login = () => {
     e.preventDefault();
     // Mock login - in real app would call API
     if (email && password) {
+      // store a simple user marker locally
+      localStorage.setItem("user", JSON.stringify({ email }));
       toast.success("Login successful!");
-      navigate("/guest-dashboard");
+      // If redirected here from a protected action, navigate back
+      const state = (location.state || {}) as { redirectTo?: string; redirectState?: any };
+      if (state.redirectTo) {
+        navigate(state.redirectTo, { state: state.redirectState });
+      } else {
+        navigate("/guest-dashboard");
+      }
     } else {
       toast.error("Please fill in all fields");
     }

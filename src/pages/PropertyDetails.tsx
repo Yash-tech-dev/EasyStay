@@ -190,7 +190,21 @@ const PropertyDetails = () => {
                   </div>
                 </div>
                 
-                <Button className="w-full mb-4" size="lg" onClick={() => navigate('/payment', { state: { propertyId: property.id, price: property.price } })}>
+                <Button
+                  className="w-full mb-4"
+                  size="lg"
+                  onClick={() => {
+                    // simple auth check: presence of `user` in localStorage
+                    const user = localStorage.getItem("user");
+                    const paymentState = { propertyId: property.id, price: property.price };
+                    if (user) {
+                      navigate("/payment", { state: paymentState });
+                    } else {
+                      // redirect to login and pass intended destination
+                      navigate("/login", { state: { redirectTo: "/payment", redirectState: paymentState } });
+                    }
+                  }}
+                >
                   Reserve Now
                 </Button>
                 

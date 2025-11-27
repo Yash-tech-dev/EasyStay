@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,6 +10,7 @@ import { toast } from "sonner";
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,8 +28,16 @@ const Register = () => {
     }
     
     if (formData.name && formData.email && formData.password) {
+      // mock account creation and persist a simple user marker
+      const user = { name: formData.name, email: formData.email };
+      localStorage.setItem("user", JSON.stringify(user));
       toast.success("Account created successfully!");
-      navigate(formData.role === "host" ? "/host-dashboard" : "/guest-dashboard");
+      const state = (location.state || {}) as { redirectTo?: string; redirectState?: any };
+      if (state.redirectTo) {
+        navigate(state.redirectTo, { state: state.redirectState });
+      } else {
+        navigate(formData.role === "host" ? "/host-dashboard" : "/guest-dashboard");
+      }
     } else {
       toast.error("Please fill in all fields");
     }
