@@ -6,102 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Search, SlidersHorizontal } from "lucide-react";
+import properties from "@/lib/propertiesData";
 
 const Properties = () => {
   const [priceRange, setPriceRange] = useState([1000, 10000]);
-  
-  // Mock data - would come from backend in real app
-  const properties = [
-    {
-      id: "1",
-      title: "Royal Private Stay",
-      location: "Varanasi, UP India",
-      price: 2000,
-      rating: 4.8,
-      reviews: 124,
-      guests: 4,
-      imageUrl:"https://a0.muscache.com/im/pictures/hosting/Hosting-1506560759450390343/original/e119394f-2a50-4cc9-b93f-080c784cf60c.jpeg?im_w=1200",
-      // imageUrl: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
-      category: "Apartment"
-    },
-    {
-      id: "2",
-      title: "Beachfront Villa",
-      location: "Miami, FL",
-      price: 350,
-      rating: 4.9,
-      reviews: 89,
-      guests: 8,
-      imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
-      category: "Villa"
-    },
-    {
-      id: "3",
-      title: "Mountain Cabin Retreat",
-      location: "Aspen, CO",
-      price: 200,
-      rating: 4.7,
-      reviews: 156,
-      guests: 6,
-      imageUrl: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=800",
-      category: "Cabin"
-    },
-    {
-      id: "4",
-      title: "Modern Loft Studio",
-      location: "Los Angeles, CA",
-      price: 95,
-      rating: 4.6,
-      reviews: 78,
-      guests: 2,
-      imageUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
-      category: "Studio"
-    },
-    {
-      id: "5",
-      title: "Luxury Penthouse Suite",
-      location: "Chicago, IL",
-      price: 450,
-      rating: 4.9,
-      reviews: 201,
-      guests: 6,
-      imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
-      category: "Penthouse"
-    },
-    {
-      id: "6",
-      title: "Charming Cottage",
-      location: "Portland, OR",
-      price: 85,
-      rating: 4.5,
-      reviews: 67,
-      guests: 3,
-      imageUrl: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
-      category: "Cottage"
-    },
-    {
-      id: "7",
-      title: "Riverside Loft",
-      location: "Austin, TX",
-      price: 140,
-      rating: 4.7,
-      reviews: 112,
-      guests: 4,
-      imageUrl: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
-      category: "Loft"
-    },
-    {
-      id: "8",
-      title: "Desert Oasis Villa",
-      location: "Phoenix, AZ",
-      price: 280,
-      rating: 4.8,
-      reviews: 94,
-      guests: 10,
-      imageUrl: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
-      category: "Villa"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">

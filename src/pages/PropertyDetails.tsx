@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { format } from "date-fns";
+import properties from "@/lib/propertiesData";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -18,30 +19,29 @@ const PropertyDetails = () => {
   const [checkIn, setCheckIn] = useState<Date>();
   const [checkOut, setCheckOut] = useState<Date>();
   
-  // Mock data - would come from API in real app
-  const property = {
-    id,
-    title: "Royal Private Stay ",
-    location: "123 Main Street, Varanasi, Uttar Pradesh, India",
-    price: 2000,
-    rating: 4.8,
-    reviews: 124,
-    guests: 4,
-    bedrooms: 2,
-    bathrooms: 2,
-    images: [
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200",
-    ],
-    description: "Experience the perfect blend of comfort and convenience in this beautifully designed downtown apartment. Located in the heart of the city, this space offers easy access to restaurants, shops, and entertainment while providing a peaceful retreat after a day of exploration.",
-    amenities: ["WiFi", "Free Parking", "Kitchen", "Air Conditioning", "Heating", "TV"],
-    host: {
-      name: "Aditya Srivastava",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200",
-      joinedDate: "2025"
-    }
-  };
+  // Find property by id from shared data
+  const property = properties.find((p) => p.id === id);
+  
+  if (!property) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="container mx-auto px-4 py-8">
+          <Link to="/properties">
+            <Button variant="ghost" className="mb-4">
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              Back to Properties
+            </Button>
+          </Link>
+          <div className="mt-8 text-center">
+            <h2 className="text-2xl font-semibold">Property not found</h2>
+            <p className="text-muted-foreground mt-2">The property you're looking for doesn't exist.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
 
   return (
     <div className="min-h-screen bg-background">

@@ -35,14 +35,14 @@ const PropertyCard = ({
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
-          <Badge className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm">
+          <Badge className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm transition-transform duration-300 transform-gpu group-hover:scale-105">
             {category}
           </Badge>
         </div>
         
         <CardContent className="p-4">
           <div className="flex items-start justify-between mb-2">
-            <h3 className="font-semibold text-lg line-clamp-1">{title}</h3>
+            <h3 className="font-semibold text-lg line-clamp-1 transition-colors duration-300 group-hover:text-primary">{title}</h3>
             <div className="flex items-center gap-1 text-sm">
               <Star className="h-4 w-4 fill-accent text-accent" />
               <span className="font-medium">{rating}</span>
