@@ -11,13 +11,13 @@ const GuestDashboard = () => {
   const upcomingBookings = [
     {
       id: "1",
-      property: "Cozy Downtown Apartment",
-      location: "New York, NY",
+      property: "Royal Varanasi Retreat",
+      location: "Varanasi, Uttar Pradesh",
       checkIn: "2025-11-15",
       checkOut: "2025-11-18",
       nights: 3,
-      total: 410,
-      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400",
+      total: 4100,
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
       status: "confirmed"
     },
     {
@@ -27,8 +27,8 @@ const GuestDashboard = () => {
       checkIn: "2025-12-01",
       checkOut: "2025-12-05",
       nights: 4,
-      total: 1450,
-      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400",
+      total: 14500,
+      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
       status: "pending"
     }
   ];
@@ -41,8 +41,8 @@ const GuestDashboard = () => {
       checkIn: "2025-09-10",
       checkOut: "2025-09-15",
       nights: 5,
-      total: 1050,
-      image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=400",
+      total: 10500,
+      image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=800",
       rating: 5,
       reviewed: true
     }
@@ -50,18 +50,18 @@ const GuestDashboard = () => {
 
   const favorites = [
     {
-      id: "1",
-      title: "Luxury Penthouse Suite",
-      location: "Chicago, IL",
-      price: 450,
+      id: "4",
+      title: "Modern Loft Studio",
+      location: "Los Angeles, CA",
+      price: 4500,
       rating: 4.9,
       image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400"
     },
     {
       id: "2",
-      title: "Riverside Loft",
-      location: "Austin, TX",
-      price: 140,
+      title: "Sabarmati Riverside Loft",
+      location: "Ahmedabad, Gujarat, India",
+      price: 1400,
       rating: 4.7,
       image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400"
     }

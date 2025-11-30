@@ -27,8 +27,8 @@ const PropertyCard = ({
   category,
 }: PropertyCardProps) => {
   return (
-    <Link to={`/property/${id}`}>
-      <Card className="group overflow-hidden border-border hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+    <Link to={`/property/${id}`} className="group">
+      <Card className="overflow-hidden border-border hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
         <div className="relative overflow-hidden aspect-[4/3]">
           <img
             src={imageUrl}
