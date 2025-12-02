@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Mail, Lock } from "lucide-react";
 import { toast } from "sonner";
+import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,6 +31,30 @@ const Login = () => {
     } else {
       toast.error("Please fill in all fields");
     }
+  };
+
+  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
+    console.log(credentialResponse);
+    // **IMPORTANT**: Send this credentialResponse.credential to your backend!
+    // Your backend should verify the token with Google, then create a user session
+    // and return a session token for your app.
+
+    // For now, we'll simulate a successful login.
+    const mockUser = { email: "user@google.com" }; // In reality, you'd get this from your backend
+    localStorage.setItem("user", JSON.stringify(mockUser));
+    toast.success("Logged in with Google successfully!");
+
+    const state = (location.state || {}) as { redirectTo?: string; redirectState?: any };
+    if (state.redirectTo) {
+      navigate(state.redirectTo, { state: state.redirectState });
+    } else {
+      navigate("/guest-dashboard");
+    }
+  };
+
+  const handleGoogleError = () => {
+    console.error("Google Login Failed");
+    toast.error("Google login failed. Please try again.");
   };
 
   return (
@@ -105,10 +130,15 @@ const Login = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <Button variant="outline" type="button">
-                Google
-              </Button>
-              <Button variant="outline" type="button">
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={handleGoogleError}
+                useOneTap
+                theme="outline"
+                shape="rectangular"
+                width="100%"
+              />
+              <Button variant="outline" type="button" onClick={() => toast.info("Facebook login is not yet implemented.")}>
                 Facebook
               </Button>
             </div>
